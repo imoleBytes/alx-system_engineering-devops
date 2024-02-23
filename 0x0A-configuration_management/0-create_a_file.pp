@@ -3,15 +3,15 @@
 $filepath = '/tmp/school'
 
 exec {'create /tmp/school':
-    command => "echo 'I love Puppet' > $filepath"
+    command => "echo 'I love Puppet' > ${filepath}"
 }
 
 exec {'change owner and group':
-    command => "chown www-data:www-data $filepath"
+    command => "chown www-data:www-data ${filepath}"
     require => Exec['create /tmp/school']
 }
 
 exec {'permision':
-    command => "chmod 0744 $filepath"
+    command => "chmod 0744 ${filepath}"
     require => Exec['create /tmp/school']
 }
