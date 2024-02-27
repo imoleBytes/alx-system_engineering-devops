@@ -4,4 +4,4 @@
 usern='ubuntu'
 addr='100.26.158.41'
 
-ssh -i ~/.ssh/school $usern@$ip
+ssh -i ~/.ssh/school "$usern@$addr"
