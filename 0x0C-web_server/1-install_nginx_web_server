@@ -1,1 +1,7 @@
 #!/usr/bin/env bash
+# Install nginx on your web-01 and serve "hello World"
+apt update -y
+apt install nginx -y
+
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.html
