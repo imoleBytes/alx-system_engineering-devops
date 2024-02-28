@@ -4,6 +4,8 @@ apt update -y
 apt install nginx -y
 
 ufw allow 'Nginx HTTP'
+mkdir -p /var/www/html/
+sudo chmod -R 755 /var/www
 echo "Hello World!" > /var/www/html/index.html
 
 configServer=\
@@ -11,7 +13,7 @@ configServer=\
     listen 80 default_server;
     listen [::]:80 default_server;
     root /var/www/html;
-    index index.html;
+    index index.html index.htm index.nginx-debian.html;
     server_name _;
     location / {
         try_files \$uri \$uri/ =404;
