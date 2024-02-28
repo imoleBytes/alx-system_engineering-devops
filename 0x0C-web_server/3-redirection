@@ -19,7 +19,7 @@ configServer=\
     Redirect 301 /redirect_me https://wwww.youtube.com/;
 }"
 
-echo "$configServer" > /etc/nginx/sites-enabled/default
+echo -e "$configServer" > /etc/nginx/sites-enabled/default
 
 if [ "$(pgrep -c nginx)" -le 0 ]
 then
