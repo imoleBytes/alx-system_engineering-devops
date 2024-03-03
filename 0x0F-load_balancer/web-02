@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# bash script to connect to my server using ssh private keys stored at ~/.ssh/school
+
+usern='ubuntu'
+addr='54.236.41.243'
+
+ssh -i ~/.ssh/school "$usern@$addr"
