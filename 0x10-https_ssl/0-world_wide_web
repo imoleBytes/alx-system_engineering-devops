@@ -1,20 +1,27 @@
 #!/usr/bin/env bash
 # Display information about subdomains.
+# Author: Imole Kolawole
 # Usage: ./1-world_wide_web <domain> <subdomain>
 
-# create a function to find the info
-domainINFO () {
-    line=$(dig "$2"."$1" | grep -A1 'ANSWER SECTION:' | tr '\t' '\n' | tail -2 | tr '\n' ' ')
-    echo "$2 $line" | awk '{print "The subdomain " $1 " is a " $2 " record and points to " $3}'
+# funcion to find the information about a domain
+domain_INFO(){
+    line=$(dig "$2"."$1" | grep -A1 "ANSWER SECTION:" | tail -1)
+    record=$(echo "$line" | awk '{print $4}')
+    dest=$(echo "$line" | awk '{print $5}')
+    echo The subdomain "$2" is a "$record" record and points to "$dest"
 }
 
-if [ "$#" == 1 ]
+if [ $# -eq 2 ]
 then
-  domainINFO "$1" "www"
-  domainINFO "$1" "lb-01"
-  domainINFO "$1" "web-01"
-  domainINFO "$1" "web-02"
-elif [ "$#" == 2 ]
+domain_INFO "$1" "$2"
+elif [ $# -eq 1 ]
 then
-  domainINFO "$1" "$2"
+domain_INFO "$1" "www"
+domain_INFO "$1" "lb-01"
+domain_INFO "$1" "web-01"
+domain_INFO "$1" "web-02"
+# else
+# echo "Usage: ./1-world_wide_web <domain> <subdomain>"
+# echo "OR"
+# echo "Usage: ./1-world_wide_web <domain>"
 fi
