@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Display information about subdomains.
 # Author: Imole Kolawole
-# Usage: ./1-world_wide_web <domain> <subdomain>
+# Usage: ./0-world_wide_web <domain> <subdomain>
 
 # funcion to find the information about a domain
 domain_INFO(){
@@ -21,7 +21,7 @@ domain_INFO "$1" "lb-01"
 domain_INFO "$1" "web-01"
 domain_INFO "$1" "web-02"
 # else
-# echo "Usage: ./1-world_wide_web <domain> <subdomain>"
+# echo "Usage: ./0-world_wide_web <domain> <subdomain>"
 # echo "OR"
-# echo "Usage: ./1-world_wide_web <domain>"
+# echo "Usage: ./0-world_wide_web <domain>"
 fi
