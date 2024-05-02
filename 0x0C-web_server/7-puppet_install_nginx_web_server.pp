@@ -10,8 +10,8 @@ exec {'Hello':
   provider => shell,
 }
 
-exec {'sudo sed -i "s/listen 80 default_server;/listen 80 default_server;\\n\\tlocation
-\/redirect_me {\\n\\t\\treturn 301 https:\/\/x.com\/;\\n\\t}/" /etc/nginx/sites-available/default':
+exec {'insert redirect_me':
+  command => 'sed -i "s/server_name _;/server_name _;\n\tlocation \/redirect_me {\n\t\treturn 301 https:\/\/www.x.com;\n\t}\n/g" /etc/nginx/sites-available/default'
   provider => shell,
 }
 
