@@ -20,8 +20,4 @@ domain_INFO "$1" "www"
 domain_INFO "$1" "lb-01"
 domain_INFO "$1" "web-01"
 domain_INFO "$1" "web-02"
-# else
-# echo "Usage: ./0-world_wide_web <domain> <subdomain>"
-# echo "OR"
-# echo "Usage: ./0-world_wide_web <domain>"
 fi
