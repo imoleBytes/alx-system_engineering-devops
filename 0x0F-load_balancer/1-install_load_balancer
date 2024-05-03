@@ -2,21 +2,21 @@
 # Install and configure HAproxy (Load balancer)
 # To distribute traffics to 2 webservers
 # Using roundrobin algorithm
-apt update
-apt upgrade
+apt update -y
 apt install -y haproxy
 echo "ENABLED=1" >> /etc/default/haproxy
 my_server_config=\
 "
 frontend haproxy-main
-        bind *:80
-        option forwardfor
-        default_backend nginx_servers
+	bind *:80
+	option forwardfor
+	default_backend nginx_servers
 
 backend nginx_servers
-        balance roundrobin
-        server 180142-web-01 100.26.158.41:80 check
-        server 180142-web-02 54.236.41.243:80 check
-
+	balance roundrobin
+	server 180142-web-01 18.204.7.196:80 check
+	server 180142-web-02 100.26.212.62:80 check
 "
 echo "$my_server_config" >> /etc/haproxy/haproxy.cfg
+
+service haproxy restart
