@@ -31,7 +31,7 @@ def main():
     todos = []
 
     for todo in user_todos:
-        obj = {"task": f'{todo.get("tile")}', "completed":
+        obj = {"task": f'{todo.get("title")}', "completed":
                todo.get("completed"), "username": userName}
         todos.append(obj)
 
