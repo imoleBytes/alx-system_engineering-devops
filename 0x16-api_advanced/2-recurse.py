@@ -9,7 +9,7 @@ import requests
 
 def recurse(subreddit, hot_list: list = [], count=0, after=""):
     """returns the titles of the hot posts of the subreddit"""
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
+    url = f"https://www.reddit.com/r/{subreddit}/hot/.json"
     headers = {
         # "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
         "User-Agent": "0x16.api.advanced:v1.0.0 (by /u/imole)"
@@ -38,16 +38,3 @@ def recurse(subreddit, hot_list: list = [], count=0, after=""):
     if after:
         return recurse(subreddit, hot_list, count=count, after=after)
     return hot_list
-
-
-# if __name__ == '__main__':
-#     import sys
-#     recurse = __import__('2-recurse').recurse
-#     if len(sys.argv) < 2:
-#         print("Please pass an argument for the subreddit to search.")
-#     else:
-#         result = recurse(sys.argv[1])
-#         if result is not None:
-#             print(len(result))
-#         else:
-#             print("None")
