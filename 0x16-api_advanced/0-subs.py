@@ -14,10 +14,7 @@ def number_of_subscribers(subreddit):
         # "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
         "User-Agent": "0x16.api.advanced:v1.0.0 (by /u/imole)"
     }
-    try:
-        results = requests.get(url=url, allow_redirects=False, headers=headers)
-        if results.status_code == 404:
-            return 0
-        return (results.json().get("data").get('subscribers'))
-    except Exception:
+    results = requests.get(url=url, allow_redirects=False, headers=headers)
+    if results.status_code == 404:
         return 0
+    return (results.json().get("data").get('subscribers'))
